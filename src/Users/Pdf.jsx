@@ -1,0 +1,130 @@
+import "../Users/Pdf.css";
+
+export default function Pdf({ boardInfo = {}, specifications = {} }) {
+    const today = new Date();
+    const currentDate = today.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+    });
+
+    return (
+        <div className="scpdf-page">
+            <div className="scpdf-header">
+                <div className="scpdf-logo d-flex">
+                    <img src="assets/images/logo-light.png" alt="Logo" />
+                    <h1>SEC<span>URE CIRC</span>UIT</h1>
+                </div>
+                <div className="scpdf-header-info">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Date</td>
+                                <td>{currentDate}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div className="scpdf-title">PRODUCT SPECIFICATIONS</div>
+
+            <table className="scpdf-summary-table">
+                <tbody>
+                    <tr className="scpdf-section">
+                        <td colSpan="8">Basic Information</td>
+                    </tr>
+                    <tr>
+                        <td>Base Material</td>
+                        <td colSpan="2">{specifications.base_material || "N/A"}</td>
+
+                        <td>Layers</td>
+                        <td colSpan="1">{boardInfo.layer_count || "N/A"}</td>
+
+                        <td>PCB Qty</td>
+                        <td colSpan="2">{specifications.pcb_qut || "N/A"} PCS</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td colSpan="3">
+                            {boardInfo.width || "0"} × {boardInfo.height || "0"} {boardInfo.unit || "mm"}
+                        </td>
+                        <td>Product Type</td>
+                        <td colSpan="3">{specifications.product_type || "N/A"}</td>
+                    </tr>
+
+                    <tr className="scpdf-section">
+                        <td colSpan="8">PCB Specification</td>
+                    </tr>
+                    <tr>
+                        <td>Different Design</td>
+                        <td>{specifications.different_design || "N/A"}</td>
+
+                        <td>Delivery Format</td>
+                        <td>{specifications.delivery_format || "N/A"}</td>
+
+                        <td>Thickness</td>
+                        <td>{specifications.pcb_thickness || "N/A"}</td>
+
+                        <td>Color</td>
+                        <td>{specifications.pcb_color || "N/A"}</td>
+                    </tr>
+                    <tr>
+                        <td>Silkscreen</td>
+                        <td>{specifications.silkscreen || "N/A"}</td>
+
+                        <td>Material</td>
+                        <td colSpan="2">{specifications.material || "N/A"}</td>
+
+                        <td>Surface Finish</td>
+                        <td colSpan="2">{specifications.surface_finish || "N/A"}</td>
+                    </tr>
+
+                    <tr className="scpdf-section">
+                        <td colSpan="8">High Specification</td>
+                    </tr>
+                    <tr>
+                        <td>Outer Copper Weight</td>
+                        <td>{specifications.outer_copper || "N/A"}</td>
+
+                        <td>Via Covering</td>
+                        <td>{specifications.via_covering || "N/A"}</td>
+
+                        <td>Via Plating Method</td>
+                        <td>{specifications.via_plating || "N/A"}</td>
+
+                        <td>Min via hole size/ diameter</td>
+                        <td>{specifications.min_via_size || "N/A"}</td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Production File</td>
+                        <td>{specifications.confirm_production_file || "N/A"}</td>
+
+                        <td>Mark on PCB</td>
+                        <td>{specifications.mark_on_pcb || "N/A"}</td>
+
+                        <td>Electrical Test</td>
+                        <td>{specifications.electrical_test || "N/A"}</td>
+
+                        <td>Gold Fingers</td>
+                        <td>{specifications.gold_fingers || "N/A"}</td>
+                    </tr>
+                    <tr>
+                        <td>Castellated Holes</td>
+                        <td>{specifications.castellated_holes || "N/A"}</td>
+
+                        <td>Edge Plating</td>
+                        <td>{specifications.edge_plating || "N/A"}</td>
+
+                        <td>Blind Slots</td>
+                        <td>{specifications.blindSlots || "N/A"}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div className="scpdf-footer">
+                This document is system generated by Secure Circuit.
+            </div>
+        </div>
+    );
+}

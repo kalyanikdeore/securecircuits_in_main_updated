@@ -1,0 +1,514 @@
+import banner from "../../public/assets/images/profile-banner.png";
+import defaultProfile from "../../public/assets/images/defaultProfile.jpeg";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { BASE_URL } from "../Config/Base-url";
+
+function Profile() {
+  const supplier = JSON.parse(localStorage.getItem("supplier"));
+
+  const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  const [profile, setProfile] = useState({
+    supp_name: "",
+    supp_email: "",
+    supp_mobile: "",
+    supp_image: "",
+  });
+
+  const [passwordData, setPasswordData] = useState({
+    current_password: "",
+    new_password: "",
+    confirm_password: "",
+  });
+
+  const handlePasswordChange = (e) => {
+    setPasswordData({
+      ...passwordData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    getProfile();
+
+  }, []);
+
+  const getProfile = async () => {
+    setPageLoading(true);
+
+    try {
+      const res = await axios.get(
+        `${BASE_URL}supplier/getdatawhere/tbl_suppliers/supp_id/${supplier.supp_id}`,
+      );
+
+      if (res.data.status) {
+        setProfile(res.data.data[0]);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setPageLoading(false);
+    }
+  };
+
+  const handleChange = (e) => {
+    setProfile({
+      ...profile,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const updateProfile = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const updateData = {
+        supp_name: profile.supp_name,
+        supp_email: profile.supp_email,
+        supp_mobile: profile.supp_mobile,
+        supp_image: profile.supp_image,
+      };
+
+      const res = await axios.post(
+        `${BASE_URL}supplier/updatedata/tbl_suppliers/supp_id/${supplier.supp_id}`,
+        updateData,
+      );
+
+      if (res.data.status) {
+        localStorage.setItem(
+          "supplier",
+          JSON.stringify({
+            ...supplier,
+            supp_name: profile.supp_name,
+            supp_email: profile.supp_email,
+            supp_mobile: profile.supp_mobile,
+            supp_image: profile.supp_image,
+          }),
+        );
+
+        toast.success(res.data.message);
+      }
+    } catch (err) {
+      toast.error("Update failed");
+    }
+
+    setLoading(false);
+  };
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("supp_image", file);
+
+    setUploading(true);
+    setUploadProgress(0);
+
+    try {
+      const upload = await axios.post(
+        `${BASE_URL}supplier/fileupload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+
+          onUploadProgress: (progressEvent) => {
+            const percent = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+
+            setUploadProgress(percent);
+          },
+        }
+      );
+
+      if (upload.data.status) {
+        setProfile((prev) => ({
+          ...prev,
+          supp_image: upload.data.files.supp_image,
+        }));
+
+        toast.success("Profile image uploaded");
+      }
+
+      setUploadProgress(100);
+    } catch (err) {
+      console.log(err);
+      toast.error("Image upload failed");
+    } finally {
+      setTimeout(() => {
+        setUploading(false);
+        setUploadProgress(0);
+      }, 700);
+    }
+  };
+
+  const changePassword = async () => {
+    if (
+      !passwordData.current_password ||
+      !passwordData.new_password ||
+      !passwordData.confirm_password
+    ) {
+      return toast.error("All fields are required");
+    }
+
+    if (passwordData.new_password !== passwordData.confirm_password) {
+      return toast.error("New Password and Confirm Password do not match");
+    }
+
+    try {
+      const res = await axios.post(
+        `${BASE_URL}supplier/changepassword`,
+        {
+          supp_id: supplier.supp_id,
+          current_password: passwordData.current_password,
+          new_password: passwordData.new_password,
+        }
+      );
+
+      if (res.data.status) {
+        toast.success(res.data.message);
+
+        setPasswordData({
+          current_password: "",
+          new_password: "",
+          confirm_password: "",
+        });
+
+        setShowModal(false);
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (err) {
+      toast.error("Password change failed");
+    }
+  };
+
+  const resetForm = () => {
+    resetForm();
+    setShowModal(false);
+  };
+
+
+  return (
+    <>
+      <div className="container-fluid px-3 px-lg-4 py-4">
+        <div className="page-heading">
+          <div className="page-heading-copy">
+            <span className="page-icon">
+              <i className="bi bi-person-badge text-primary" aria-hidden="true"></i>
+            </span>
+            <div>
+              <p className="eyebrow mb-1 text-primary">Account</p>
+              <h1 className="h3 mb-1">Profile</h1>
+            </div>
+          </div>
+        </div>
+
+        <section className="row g-3">
+          {pageLoading ? (
+            <>
+              <div className="col-12 col-xl-4">
+                <div className="panel h-100 text-center profile-card p-4">
+
+                  <div className="profile-skeleton profile-avatar"></div>
+
+                  <div className="profile-skeleton profile-title"></div>
+
+                  <div className="mt-4">
+                    <div className="profile-skeleton profile-text"></div>
+                    <div className="profile-skeleton profile-text"></div>
+                    <div className="profile-skeleton profile-text"></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="col-12 col-xl-8">
+                <div className="panel p-4">
+
+                  <div className="row g-3">
+
+                    <div className="col-md-1">
+                      <div className="profile-skeleton profile-input"></div>
+                    </div>
+
+                    <div className="col-md-5">
+                      <div className="profile-skeleton profile-input"></div>
+                    </div>
+
+                    <div
+                      className="col-md-6 d-flex justify-content-end align-items-end"
+                      style={{ minHeight: "10px" }}
+                    >
+                      <div className="profile-skeleton profile-input-button"></div>
+                    </div>
+
+                    <div className="col-md-6 mt-5">
+                      <div className="profile-skeleton profile-input"></div>
+                    </div>
+
+                    <div className="col-md-6 mt-5">
+                      <div className="profile-skeleton profile-input"></div>
+                    </div>
+
+                    <div className="col-md-6 mt-5">
+                      <div className="profile-skeleton profile-input"></div>
+                    </div>
+
+                    <div
+                      className="col-md-6 d-flex justify-content-center align-items-center"
+                      style={{ minHeight: "10px" }}
+                    >
+                      <div className="profile-skeleton profile-input-file"></div>
+                    </div>
+
+                    <div className="col-12 d-flex justify-content-center mt-4">
+                      <div className="profile-skeleton profile-button"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </>
+          ) : (
+
+            <>
+              <div className="col-12 col-xl-4">
+                <div className="panel h-100 text-center profile-card">
+                  <img
+                    className="avatar-img avatar-xl profile-photo mt-2 d-block mx-auto"
+                    src={
+                      profile.supp_image
+                        ? `${BASE_URL}public/Uploads/${profile.supp_image}`
+                        : defaultProfile
+                    }
+                    alt={profile.supp_contact_person}
+                  />
+                  <h2 className="h5 mt-3 mb-1 fw-bold">{profile.supp_contact_person}</h2>
+                  <div className="info-list mt-4 text-start">
+                    <div>
+                      <span>Email</span>
+                      <strong>{profile.supp_email?.slice(0, 20)}</strong>
+                    </div>
+
+                    <div>
+                      <span>Mobile</span>
+                      <strong>+91 {profile.supp_mobile}</strong>
+                    </div>
+                    <div>
+                      <span>Company</span>
+                      <strong>{profile.supp_company_name?.slice(0, 15)} </strong>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-xl-8">
+                <form
+                  onSubmit={updateProfile}
+                  className="panel needs-validation"
+                  noValidate
+                >
+                  <div className="panel-header">
+                    <div>
+                      <h2 className="h5 mb-1 section-title">
+                        <i className="bi bi-person-gear text-primary" aria-hidden="true"></i>
+                        <span>Profile Settings</span>
+                      </h2>
+                      <p className="text-muted mb-0">
+                        Update your account profile and contact details.
+                      </p>
+                    </div>
+                    <button
+                      className="btn btn-outline-primary"
+                      type="button"
+                      onClick={() => {
+                        setShowModal(true);
+                      }}>Change Password</button>
+                  </div>
+
+                  <div className="row g-3">
+                    <div className="col-md-6">
+                      <label className="form-label" htmlFor="profileName">
+                        Name
+                      </label>
+                      <input
+                        className="model-add-edit-input"
+                        id="profileName"
+                        type="text"
+                        name="supp_contact_person"
+                        value={profile.supp_contact_person}
+                        onChange={handleChange}
+                      ></input>
+                    </div>
+
+                    <div className="col-md-6">
+                      <label className="form-label" htmlFor="profileEmail">
+                        Email
+                      </label>
+                      <input
+                        className="model-add-edit-input"
+                        type="email"
+                        name="supp_email"
+                        value={profile.supp_email}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="col-md-6">
+                      <label className="form-label" htmlFor="profileMobile">
+                        Moble
+                      </label>
+                      <input
+                        className="model-add-edit-input"
+                        type="tel"
+                        name="supp_mobile"
+                        maxLength={10}
+                        value={profile.supp_mobile}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="col-md-6 text-center pt-2">
+                      <input
+                        type="file"
+                        className="d-none"
+                        id="profileImage"
+                        accept="image/*"
+                        onChange={uploadImage}
+                      />
+
+                      <label
+                        htmlFor="profileImage"
+                        className="btn btn-primary px-4 py-2 fw-semibold shadow-sm rounded-pill mt-4"
+                      >
+                        <i className="fas fa-image me-2"></i>
+                        Choose Profile Image
+                      </label>
+                      {uploading && (
+                        <div className="profile-upload-progress mt-3">
+                          <div className="profile-upload-progress-bar">
+                            <div
+                              className="profile-upload-progress-fill"
+                              style={{ width: `${uploadProgress}%` }}
+                            ></div>
+                          </div>
+
+                          <small className="fw-semibold text-primary">
+                            Uploading... {uploadProgress}%
+                          </small>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-center mt-4">
+                    <button
+                      className="btn btn-outline-primary"
+                      type="submit"
+                      disabled={loading}
+                    >
+                      {loading ? "Updating..." : "Update Profile"}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </>
+          )}
+        </section>
+      </div>
+
+      {showModal && (
+        <div className="model-add-edit-modal-overlay">
+          <div className="model-add-edit-modal-dialog model-size-sm">
+            <div className="model-add-edit-modal-content">
+              <div className="model-add-edit-modal-header-primary">
+                <h5 className="model-add-edit-modal-title">
+                  Change Password
+                </h5>
+
+                <button
+                  type="button"
+                  className="model-add-edit-modal-close"
+                  onClick={() => setShowModal(false)}                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="model-add-edit-modal-body">
+                <div className="row g-3">
+
+                  <div className="col-md-12">
+                    <label className="form-label">Current Password</label>
+                    <input
+                      type="password"
+                      className="model-add-edit-input"
+                      placeholder="Current Password"
+                      name="current_password"
+                      value={passwordData.current_password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+
+                  <div className="col-md-12">
+                    <label className="form-label">New Password</label>
+                    <input
+                      type="password"
+                      className="model-add-edit-input"
+                      placeholder="New Pasword"
+                      name="new_password"
+                      value={passwordData.new_password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+
+                  <div className="col-md-12">
+                    <label className="form-label">Confirm Password</label>
+                    <input
+                      type="password"
+                      className="model-add-edit-input"
+                      placeholder="Confirm Password"
+                      name="confirm_password"
+                      value={passwordData.confirm_password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+
+                  <div className="model-add-edit-modal-footer d-flex justify-content-between">
+                    <button
+                      className="model-add-edit-btn model-add-edit-btn-cancel"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Close
+                    </button>
+
+                    <button
+                      type="button"
+                      className="model-add-edit-btn model-add-edit-btn-save-primary"
+                      onClick={changePassword}
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default Profile;

@@ -1,0 +1,610 @@
+.about-tag {
+  font-size: 25px;
+  font-weight: 700;
+  color: #111;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.about-title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111;
+  margin-bottom: 25px;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 35px;
+}
+
+.about-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.about-feature-icon {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-feature-icon i {
+  color: #ff4d4d;
+  font-size: 20px;
+}
+
+.about-feature-item span {
+  font-size: 16px;
+  color: #000000 !important;
+  font-weight: 500;
+}
+
+/*=========================
+ Experience Section
+=========================*/
+
+.experience-section {
+  padding: 50px 0;
+  background: #fff;
+}
+
+.experience-card {
+  background: #f8b7bf;
+  border-radius: 25px;
+  padding: 70px;
+}
+
+.experience-img {
+  width: 100%;
+  max-width: 500px;
+}
+
+.experience-title {
+  font-size: 25px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.experience-card p {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/*==========================
+ WHO WE ARE
+===========================*/
+
+.who-we-are-section {
+  padding: 50px 0;
+}
+
+.who-image-box {
+  position: relative;
+}
+
+.who-image {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.who-counter {
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%);
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.counter-box {
+  background: #fff;
+  width: 280px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.counter-box i {
+  font-size: 32px;
+  color: #ff2b2b;
+}
+
+.counter-box h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000;
+}
+
+.counter-box p {
+  margin: 0;
+  font-size: 14px !important;
+  color: #000000 !important;
+}
+
+.who-tag {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.who-title {
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+.who-we-are-section p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #000000;
+}
+
+/*=========================
+ Mission & Vision
+=========================*/
+
+.mission-section {
+  padding: 50px 0;
+  background: #fff !important;
+}
+
+.mission-heading h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.heading-line {
+  width: 110px;
+  height: 4px;
+  background: #e9202a;
+  margin: 0 auto 25px;
+  border-radius: 20px;
+}
+
+.mission-heading p {
+  font-size: 16px;
+  color: #444;
+  max-width: 850px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+.mission-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  padding: 25px;
+  background: #fff;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.mission-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.mission-icon {
+  width: 55px;
+  height: 55px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission-icon i {
+  font-size: 32px;
+  color: #1d6d39;
+}
+
+.mission-top h3 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+  color: #000;
+}
+
+.mission-card p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/*=========================
+ OUR CORE VALUES
+=========================*/
+
+.core-values-section {
+  padding: 50px 0;
+}
+
+.value-heading h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.value-line {
+  width: 100px;
+  height: 4px;
+  background: #e9202a;
+  margin: 0 auto 30px;
+  border-radius: 50px;
+}
+
+.value-card {
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  background: #fff;
+  padding: 20px 14px;
+  text-align: center;
+  height: 100%;
+  transition: 0.35s;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+.value-icon {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border: 1px solid #ececec;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+}
+
+.value-icon i {
+  color: #ff2b2b;
+  font-size: 32px;
+}
+
+.value-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 18px;
+}
+
+.value-card p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+
+  margin: 0;
+}
+
+/*=========================================
+ Responsive CSS
+=========================================*/
+
+/* Laptop */
+@media (max-width: 1199px) {
+  .about-title,
+  .who-title,
+  .mission-heading h2,
+  .value-heading h2 {
+    font-size: 36px;
+  }
+
+  .experience-card {
+    padding: 50px;
+  }
+
+  .counter-box {
+    width: 240px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .about-section,
+  .experience-section,
+  .who-we-are-section,
+  .mission-section,
+  .core-values-section {
+    padding: 70px 0;
+  }
+
+  .about-tag,
+  .who-tag {
+    display: block;
+    text-align: center;
+  }
+
+  .about-title,
+  .who-title,
+  .mission-heading h2,
+  .value-heading h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .about-text,
+  .who-we-are-section p,
+  .mission-heading p {
+    text-align: center;
+  }
+
+  .about-img,
+  .experience-img,
+  .who-image {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+
+  .about-features {
+    justify-content: center;
+  }
+
+  .experience-card {
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .who-image-box {
+    margin-bottom: 80px;
+  }
+
+  .who-counter {
+    width: 100%;
+    gap: 15px;
+  }
+
+  .counter-box {
+    width: 220px;
+  }
+
+  .mission-card,
+  .value-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .about-section,
+  .experience-section,
+  .who-we-are-section,
+  .mission-section,
+  .core-values-section {
+    padding: 50px 0;
+  }
+
+  .about-tag,
+  .who-tag {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .about-title,
+  .who-title,
+  .mission-heading h2,
+  .value-heading h2 {
+    font-size: 26px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .about-text,
+  .who-we-are-section p,
+  .mission-card p,
+  .value-card p {
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .about-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .about-feature-item {
+    width: calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .about-feature-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .about-feature-icon i {
+    font-size: 18px;
+  }
+
+  .about-feature-item span {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .experience-card {
+    padding: 25px 20px;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  .experience-title {
+    font-size: 22px;
+  }
+
+  .who-image-box {
+    margin-bottom: 170px;
+  }
+
+  .who-counter {
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    bottom: -150px;
+    transform: translateX(-50%);
+    width: 90%;
+    gap: 15px;
+  }
+
+  .counter-box {
+    width: 200px;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .counter-box h3 {
+    font-size: 24px;
+  }
+
+  .counter-box p {
+    font-size: 14px !important;
+  }
+
+  .mission-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .mission-top h3 {
+    font-size: 22px;
+  }
+
+  .mission-card {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .value-card {
+    padding: 25px 18px;
+  }
+
+  .value-card h3 {
+    font-size: 20px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 575px) {
+  .about-title,
+  .who-title,
+  .mission-heading h2,
+  .value-heading h2 {
+    font-size: 22px;
+  }
+
+  .about-text,
+  .who-we-are-section p,
+  .mission-card p,
+  .value-card p {
+    font-size: 14px;
+  }
+
+  .about-feature-icon,
+  .mission-icon,
+  .value-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .about-feature-icon i,
+  .mission-icon i,
+  .value-icon i {
+    font-size: 22px;
+  }
+  .who-image-box {
+    margin-bottom: 100px;
+  }
+
+  .who-counter {
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row; /* Side by side */
+  }
+
+  .counter-box {
+    width: 48%;
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .counter-box i {
+    font-size: 24px;
+  }
+
+  .counter-box h3 {
+    font-size: 20px;
+  }
+
+  .counter-box p {
+    font-size: 12px !important;
+    line-height: 1.4;
+  }
+
+  .experience-card {
+    padding: 20px 15px;
+  }
+}

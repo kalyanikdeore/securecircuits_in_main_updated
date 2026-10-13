@@ -1,0 +1,184 @@
+/* Clean White Background & Wrapper */
+.px-auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f2f2;
+  position: relative;
+  padding: 30px 15px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Red Glass/Border Accent Card Container */
+.px-auth-card {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  border: 1px solid #fecaca;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 40px rgba(220, 38, 38, 0.12);
+  z-index: 10;
+  color: #1f2937;
+  margin-top: 50px;
+}
+
+/* Header & Branding */
+.px-auth-brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.px-auth-logo {
+  max-width: 160px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 6px rgba(220, 38, 38, 0.15));
+}
+
+.px-auth-desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+
+/* Top Segmented Tab Switcher */
+.px-tab-bar {
+  display: flex;
+  background: #fef2f2;
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #fee2e2;
+}
+
+.px-tab-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  color: #991b1b;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.px-tab-btn.active {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}
+
+/* Input Group */
+.px-field-group {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.px-field-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #dc2626;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.px-field-group input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #fca5a5;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.px-field-group input::placeholder {
+  color: #9ca3af;
+}
+
+.px-field-group input:focus {
+  border-color: #dc2626;
+  background: #fff5f5;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* Red Submit Button */
+.px-submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.3);
+}
+
+.px-submit-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 8px 22px rgba(220, 38, 38, 0.45);
+}
+
+.px-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary Action Links */
+.px-action-link {
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: color 0.2s ease;
+}
+
+.px-action-link:hover {
+  color: #991b1b;
+  text-decoration: underline;
+}
+
+/* Custom Red Spinner */
+.px-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: pxSpin 0.8s linear infinite;
+}
+
+@keyframes pxSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.text-center { text-align: center; }
+
+/* Dynamic Animations */
+.px-form-fade {
+  animation: pxFade 0.4s ease-in-out;
+}
+
+@keyframes pxFade {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}

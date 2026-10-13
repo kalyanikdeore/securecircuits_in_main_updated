@@ -1,0 +1,218 @@
+/* ===========================
+   PCB SERVICE SECTION
+=========================== */
+
+.pcbservice-main-section {
+  padding: 30px 0 30px 0;
+  background: #fff;
+}
+
+.pcbservice-container {
+  width: 90%;
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* ===========================
+   INTRO SECTION
+=========================== */
+
+.pcbservice-intro {
+  margin-bottom: 60px;
+}
+
+.pcbservice-intro p {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #0e0d0d;
+  margin-bottom: 18px;
+}
+
+.pcbservice-intro b {
+  display: block;
+  margin: 30px 0 20px;
+  font-size: 19px;
+  color: #222;
+  font-weight: 600;
+}
+
+/* ===========================
+   LIST SECTION
+=========================== */
+
+.pcbservice-list {
+  list-style: none;
+  margin: 25px 0;
+  padding: 0;
+}
+
+.pcbservice-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pcbservice-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #d4141e;
+  font-weight: bold;
+}
+
+/* ===========================
+   HEADING
+=========================== */
+
+.pcbservice-heading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #d4141e;
+  margin: 60px 0;
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.pcbservice-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.pcbservice-card {
+  padding: 30px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.pcbservice-card:last-child {
+  border-bottom: none;
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.pcbservice-card img {
+  width: 100%;
+  max-width: 340px;
+  display: block;
+  margin: auto;
+  transition: 0.4s;
+}
+
+.pcbservice-card:hover img {
+  transform: scale(1.05);
+}
+
+.single-image {
+  max-width: 100% !important;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.pcbservice-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.second-pcmserv {
+  margin-left: 100px;
+}
+
+.pcbservice-content h3 {
+  color: #d4141e;
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.pcbservice-content p {
+  color: #220b0b;
+  line-height: 1.1;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.pcbservice-content strong {
+  color: #0c0c0c;
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width: 991px) {
+  .pcbservice-main-section {
+    padding: 60px 0;
+  }
+
+  .pcbservice-card {
+    padding: 25px 0;
+  }
+
+  .pcbservice-card .row {
+    text-align: center;
+  }
+
+  .pcbservice-card img {
+    max-width: 260px;
+    margin-bottom: 25px;
+  }
+
+  .pcbservice-content h3 {
+    font-size: 24px;
+  }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 767px) {
+  .pcbservice-main-section {
+    padding: 45px 15px;
+  }
+
+  .pcbservice-heading {
+    font-size: 28px;
+  }
+
+  .pcbservice-intro p {
+    font-size: 16px;
+  }
+
+  .pcbservice-list li {
+    font-size: 16px;
+  }
+
+  .pcbservice-content h3 {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .second-pcmserv {
+    margin-left: 0;
+  }
+
+  .pcbservice-content p {
+    font-size: 15px;
+  }
+
+  .pcbservice-card img {
+    max-width: 220px;
+  }
+}

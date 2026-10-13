@@ -1,0 +1,101 @@
+.phone-contact {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  z-index: 9999;
+}
+
+.whatsapp-contact {
+  position: fixed;
+  right: 20px;
+  bottom: 35px;
+  z-index: 9999;
+}
+
+.floating-item {
+  position: relative;
+  width: 50px; /* 60px -> 50px */
+  height: 50px; /* 60px -> 50px */
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: width 0.35s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.phone {
+  background: #dd0505;
+}
+
+.whatsapp {
+  background: #25d366;
+}
+
+.floating-icon {
+  width: 50px;
+  min-width: 20px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-size: 20px; /* 24px -> 20px */
+
+  margin-left: auto;
+}
+
+.floating-text {
+  position: absolute;
+  left: 16px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+
+  opacity: 0;
+  transform: translateX(20px);
+
+  transition: 0.35s;
+  white-space: nowrap;
+}
+
+.floating-item:hover {
+  width: 180px;
+}
+
+.floating-item:hover .floating-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .phone-contact {
+    right: 10px;
+    bottom: 85px;
+  }
+
+  .whatsapp-contact {
+    right: 10px;
+    bottom: 33px;
+  }
+
+  .floating-item {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-icon {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .floating-item:hover {
+    width: 200px;
+  }
+}
