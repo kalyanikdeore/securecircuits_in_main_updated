@@ -78,7 +78,7 @@ function Approved() {
           Number(b.order_stage || 0)
       );
 
-      console.log("Stage 8-12 Orders:", uniqueOrders);
+      console.log("Stage 12 Orders:", uniqueOrders);
 
       setQuotations(uniqueOrders);
 
@@ -322,6 +322,7 @@ const response = await axios.post(
   formData
 );
     console.log("Assign Response:", response.data);
+    
 
 console.log("5. UPDATE API RESPONSE:", response.data);
 console.log("6. Supplier Email:", response.data.supplier_email_sent);
